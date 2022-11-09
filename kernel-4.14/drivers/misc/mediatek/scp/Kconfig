@@ -1,0 +1,32 @@
+config MTK_TINYSYS_SCP_SUPPORT
+	bool "Specify Interface Support SCP"
+	default n
+	help
+	  SCP is a MediaTek in-house DSP which can receive
+	  command from IPI interface.
+	  Set Y to enable this feature.
+	  If unsure,
+	  Set N to stay with legancy feature.
+
+config MTK_TINYSYS_CLK_SUPPORT
+	bool "Specific clk interface support for tinysys"
+	default n
+	help
+	  Tinysys is a small OS that run on individual CPU.
+	  This feature is to provide clk consumer control driver which
+	  supports basic operations.
+	  Set Y to enable this feature.
+	  If unsure,
+	  set N to stay with legancy feature.
+
+config MTK_TINYSYS_SUSPEND_SUPPORT
+	bool "clk suspend support"
+	depends on MTK_TINYSYS_CLK_SUPPORT && HAVE_ARM_SMCCC
+	default n
+	help
+	  Tinysys is a small OS that run on individual CPU.
+	  This feature is to support suspend/resume operations in tinysys.
+	  Note this feature also needs SMC handler support.
+	  Set Y to enable this feature.
+	  If unsure,
+	  set N to stay with legancy feature.
